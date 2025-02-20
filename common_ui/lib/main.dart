@@ -1,5 +1,6 @@
 import 'package:common_ui/pages/activity_page.dart';
 import 'package:common_ui/pages/color_game_page.dart';
+import 'package:common_ui/pages/docs_demo.dart';
 import 'package:common_ui/pages/time_line_page.dart';
 import 'package:flutter/material.dart';
 
@@ -45,7 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: Timeline(),
+        child: Activity(),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
