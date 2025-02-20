@@ -1,3 +1,4 @@
+import 'package:common_ui/pages/activity_page.dart';
 import 'package:common_ui/pages/color_game_page.dart';
 import 'package:common_ui/pages/time_line_page.dart';
 import 'package:flutter/material.dart';
