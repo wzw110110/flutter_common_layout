@@ -1,6 +1,4 @@
-import 'package:common_ui/pages/activity_page.dart';
-import 'package:common_ui/pages/color_game_page.dart';
-import 'package:common_ui/pages/time_line_page.dart';
+import 'package:common_ui/pages/time_line_new_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,7 +12,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Theme.of(context);
-    print(((context as Element).findRenderObject() as RenderBox).size);
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -36,7 +33,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,7 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: Timeline(),
+        child: TimeLineNewPage(),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
