@@ -28,12 +28,13 @@ class _TimeLineNewPageState extends State<TimeLineNewPage> {
     return ListView.builder(
       itemCount: items.length,
       itemBuilder: (context, index) {
-        return _listViewItem(context, item: items[index]);
+        return _buildListViewItem(context, item: items[index]);
       },
     );
   }
 
-  Widget _listViewItem(BuildContext context, {required TimelineItem item}) {
+  Widget _buildListViewItem(BuildContext context,
+      {required TimelineItem item}) {
     return Stack(
       children: [
         Container(

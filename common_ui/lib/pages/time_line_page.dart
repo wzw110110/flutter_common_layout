@@ -32,6 +32,7 @@ class TimelineState extends State<Timeline> {
         });
   }
 
+  //FIXME: 尽量不要用 dynamic 类型
   Widget _listViewItem(item) {
     return Stack(
       children: [
@@ -99,6 +100,7 @@ class TimelineState extends State<Timeline> {
   }
 }
 
+//FIXME: 这个场景没有必要用 CustomPainter
 class TrianglePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
