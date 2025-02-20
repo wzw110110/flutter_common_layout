@@ -36,13 +36,6 @@ class _TimeLineNewPageState extends State<TimeLineNewPage> {
   Widget _listViewItem(BuildContext context, {required TimelineItem item}) {
     return Stack(
       children: [
-        Positioned(
-          left: 0,
-          top: 0,
-          bottom: 0,
-          width: _timeLineWidth,
-          child: _buildTimeline(context),
-        ),
         Container(
           margin: EdgeInsets.fromLTRB(_timeLineWidth, 10, 20, 10),
           padding: EdgeInsets.all(8),
@@ -51,6 +44,13 @@ class _TimeLineNewPageState extends State<TimeLineNewPage> {
             borderRadius: BorderRadius.circular(6.0),
           ),
           child: _buildContent(context, item: item),
+        ),
+        Positioned(
+          left: 0,
+          top: 0,
+          bottom: 0,
+          width: _timeLineWidth,
+          child: _buildTimeline(context),
         ),
       ],
     );
