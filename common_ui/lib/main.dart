@@ -1,11 +1,12 @@
 import 'package:common_ui/counter_provider.dart';
 import 'package:common_ui/http/dio_instance.dart';
+import 'package:common_ui/pages/count_page.dart';
 import 'package:common_ui/pages/time_line_new_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
-  DioInstance.instance().initDio(baseUrl: "");
+  DioInstance.instance().initDio(baseUrl: "https://www.wanandroid.com/");
   runApp(const ProviderScope(child:MyApp()));
 }
 
@@ -54,17 +55,14 @@ class _MyHomePageState extends State<MyHomePage> {
 class _counterScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final counter = ref.watch(counterProvider);
-    return Column(children: [
-      Text('Counter $counter'),
-      ElevatedButton(onPressed: (){
-        ref.read(counterProvider.notifier).state++;
-      }, child: Icon(Icons.add))
-    ]);
-    
-      
-      Container(
-      child: Text('Counter $counter'),
+    final int counter = ref.watch(counterProvider);
+    return Center(
+      child: Column(children: [
+        Text('Counter $counter'),
+        ElevatedButton(onPressed: (){
+         Navigator.push(context, MaterialPageRoute(builder: (context) => CountPage()));
+        }, child: Text("下一页"))
+      ]),
     );
   }
   

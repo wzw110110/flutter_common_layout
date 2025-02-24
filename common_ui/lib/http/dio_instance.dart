@@ -7,7 +7,7 @@ class DioInstance {
   DioInstance._();
 
   static DioInstance instance() {
-    return _instance ?? DioInstance._();
+    return _instance ??= DioInstance._();
   }
 
   final Dio _dio = Dio();
@@ -37,7 +37,7 @@ class DioInstance {
       Map<String, dynamic>? param,
       Options? options,
       CancelToken? cancelToken}) async {
-    return _dio.get(path,
+    return await _dio.get(path,
         queryParameters: param,
         options: options ??
             Options(
@@ -53,7 +53,7 @@ class DioInstance {
         Map<String, dynamic>? queryParameters,
         Options? options,
         CancelToken? cancelToken}) async {
-    return _dio.post(path,
+    return await _dio.post(path,
         queryParameters: queryParameters,
         data: data,
         options: options ??
