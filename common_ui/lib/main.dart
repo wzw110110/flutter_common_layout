@@ -1,8 +1,12 @@
+import 'package:common_ui/counter_provider.dart';
+import 'package:common_ui/http/dio_instance.dart';
 import 'package:common_ui/pages/time_line_new_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
-  runApp(const MyApp());
+  DioInstance.instance().initDio(baseUrl: "");
+  runApp(const ProviderScope(child:MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -41,8 +45,27 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: TimeLineNewPage(),
+        child: _counterScreen(),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
+}
+
+class _counterScreen extends ConsumerWidget {
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final counter = ref.watch(counterProvider);
+    return Column(children: [
+      Text('Counter $counter'),
+      ElevatedButton(onPressed: (){
+        ref.read(counterProvider.notifier).state++;
+      }, child: Icon(Icons.add))
+    ]);
+    
+      
+      Container(
+      child: Text('Counter $counter'),
+    );
+  }
+  
 }
