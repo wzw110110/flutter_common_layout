@@ -1,3 +1,4 @@
+import 'package:common_ui/article/presentation/article_screen.dart';
 import 'package:common_ui/counter_provider.dart';
 import 'package:common_ui/http/dio_instance.dart';
 import 'package:common_ui/pages/count_page.dart';
@@ -46,7 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: _counterScreen(),
+        child: ArticleScreen(),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
@@ -55,10 +56,10 @@ class _MyHomePageState extends State<MyHomePage> {
 class _counterScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final int counter = ref.watch(counterProvider);
+    final count = ref.watch(clickCountProvider);
     return Center(
       child: Column(children: [
-        Text('Counter $counter'),
+        Text('Counter $count'),
         ElevatedButton(onPressed: (){
          Navigator.push(context, MaterialPageRoute(builder: (context) => CountPage()));
         }, child: Text("下一页"))

@@ -7,8 +7,7 @@ class CountPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-
-    final int count = ref.watch(counterProvider);
+    final count = ref.watch(clickCountProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -18,7 +17,7 @@ class CountPage extends ConsumerWidget {
           child: Column(
             children: [
               ElevatedButton(onPressed: (){
-                ref.read(counterProvider.notifier).state++;
+                ref.read(clickCountProvider.notifier).increment();
               }, child: Text("点击计数+1")),
               Text("$count")
             ],
