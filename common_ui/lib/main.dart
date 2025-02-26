@@ -1,13 +1,16 @@
 import 'package:common_ui/article/presentation/article_screen.dart';
 import 'package:common_ui/counter_provider.dart';
+import 'package:common_ui/feature/home/presentation/home_screen.dart';
 import 'package:common_ui/http/dio_instance.dart';
 import 'package:common_ui/pages/count_page.dart';
 import 'package:common_ui/pages/time_line_new_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:talker_flutter/talker_flutter.dart';
+
+final talker = TalkerFlutter.init();
 
 void main() {
-  DioInstance.instance().initDio(baseUrl: "https://www.wanandroid.com/");
   runApp(const ProviderScope(child:MyApp()));
 }
 
@@ -47,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: ArticleScreen(),
+        child: HomeScreen(),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }

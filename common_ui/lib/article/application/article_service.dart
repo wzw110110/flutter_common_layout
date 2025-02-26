@@ -7,7 +7,6 @@ part 'article_service.g.dart';
 
 @Riverpod(keepAlive: true)
 Future<List<ArticleItem>?> getArticles(FutureProviderRef<List<ArticleItem>?> ref,int page) async {
-  print("第$page页");
   final response = await DioInstance.instance().get(path: "article/list/$page/json");
   final articleData = Article.fromJson(response.data['data']);
   if (articleData.datas != null && articleData.datas!.isNotEmpty) {
