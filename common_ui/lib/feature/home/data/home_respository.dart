@@ -1,5 +1,6 @@
 
 import 'package:common_ui/feature/home/data/home_article_list_item.dart';
+import 'package:common_ui/feature/home/data/home_banner_item.dart';
 import 'package:common_ui/services/network/api_interface.dart';
 import 'package:common_ui/services/network/api_service_provider.dart';
 import 'package:common_ui/services/network/data/api_base_response.dart';
@@ -14,6 +15,10 @@ class HomeRepository {
 
     Future<ApiBaseResponse<BasePaginationData<HomeArticleListItem>>> getArticlePaginationList({required pageIndex}) {
       return _apiServicee.getPaginationData(path: "/article/list/$pageIndex/json", paginationItemConverter: HomeArticleListItem.fromJson);
+    }
+    
+    Future<ApiBaseResponse<List<HomeBannerItem>>> getBannerList() {
+      return _apiServicee.getListData(path: "/banner/json", dataItemConverter: HomeBannerItem.fromJson);
     }
 }
 

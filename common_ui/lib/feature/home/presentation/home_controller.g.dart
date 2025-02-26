@@ -6,7 +6,24 @@ part of 'home_controller.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$homeControllerHash() => r'aa755dc84f2c193d8c76972392fd9bd684e32566';
+String _$homeBannerListHash() => r'c94111a6c5edaa4b6e6f6ae220b582d1b29f7ee9';
+
+/// See also [homeBannerList].
+@ProviderFor(homeBannerList)
+final homeBannerListProvider = FutureProvider<List<HomeBannerItem>>.internal(
+  homeBannerList,
+  name: r'homeBannerListProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$homeBannerListHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef HomeBannerListRef = FutureProviderRef<List<HomeBannerItem>>;
+String _$homeControllerHash() => r'd2003f8aab98a7902331389281ed648d79f6161c';
 
 /// See also [HomeController].
 @ProviderFor(HomeController)

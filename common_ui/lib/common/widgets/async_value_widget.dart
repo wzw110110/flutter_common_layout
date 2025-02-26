@@ -8,7 +8,6 @@ class AsyncValueWidget<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(value);
     return value.when(
         data: data,
         error: (e, st) => Center(child: Text("$e")),
