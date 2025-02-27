@@ -6,7 +6,7 @@ part of 'home_controller.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$homeBannerListHash() => r'c94111a6c5edaa4b6e6f6ae220b582d1b29f7ee9';
+String _$homeBannerListHash() => r'7227d39d7c6726a8ab5398ad3762e371309c2c32';
 
 /// See also [homeBannerList].
 @ProviderFor(homeBannerList)
