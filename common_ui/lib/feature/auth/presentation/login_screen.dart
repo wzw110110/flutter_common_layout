@@ -1,4 +1,5 @@
 import 'package:common_ui/feature/auth/presentation/login_controller.dart';
+import 'package:common_ui/feature/profile/presentation/profile_controller.dart';
 import 'package:common_ui/services/error_handler.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -17,11 +18,12 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    ref.listen(loginControllerProvider, (previous,next) {
+    ref.listen(loginControllerProvider, (previous, next) {
       if (next.hasError) {
         ErrorHandler().call(context, error: next.error!);
       } else if (next.hasValue) {
-          Navigator.of(context).pop();
+        ref.invalidate(profileControllerProvider);
+        Navigator.of(context).pop();
       }
     });
 
@@ -32,9 +34,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            _inputViewBuild("输入账号",_usernameController),
+            _inputViewBuild("输入账号",_usernameController,false),
             SizedBox(height: 15),
-            _inputViewBuild("输入密码",_passwordController),
+            _inputViewBuild("输入密码",_passwordController,true),
             GestureDetector(
               onTap: () => _loginAction(context),
               child: Container(
@@ -52,10 +54,11 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     );
   }
 
-  Widget _inputViewBuild(String labelText,TextEditingController controller) {
+  Widget _inputViewBuild(String labelText,TextEditingController controller, bool? obscureText) {
     return TextField(
       controller: controller,
       style: TextStyle(color: Colors.white,fontSize: 14),
+      obscureText: obscureText ?? false,
       cursorColor: Colors.white,
       decoration: InputDecoration(
         labelText: labelText,

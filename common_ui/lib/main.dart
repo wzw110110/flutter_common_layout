@@ -3,6 +3,7 @@ import 'package:common_ui/feature/home/presentation/home_screen.dart';
 import 'package:common_ui/http/dio_instance.dart';
 import 'package:common_ui/pages/count_page.dart';
 import 'package:common_ui/pages/time_line_new_page.dart';
+import 'package:common_ui/services/storage/storage_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -11,7 +12,9 @@ import 'package:common_ui/routers/go_router_build.dart';
 
 final talker = TalkerFlutter.init();
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await StorageConfig.init();
   runApp(const ProviderScope(child:MyApp()));
 }
 
