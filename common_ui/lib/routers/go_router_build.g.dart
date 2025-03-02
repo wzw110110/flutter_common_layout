@@ -10,6 +10,7 @@ List<RouteBase> get $appRoutes => [
       $mainTabbarShellRouteData,
       $articleRouteData,
       $webViewRouteData,
+      $loginRouteData,
     ];
 
 RouteBase get $mainTabbarShellRouteData => ShellRouteData.$route(
@@ -172,6 +173,29 @@ extension $WebViewRouteDataExtension on WebViewRouteData {
         queryParams: {
           'link': link,
         },
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $loginRouteData => GoRouteData.$route(
+      path: '/login',
+      factory: $LoginRouteDataExtension._fromState,
+    );
+
+extension $LoginRouteDataExtension on LoginRouteData {
+  static LoginRouteData _fromState(GoRouterState state) =>
+      const LoginRouteData();
+
+  String get location => GoRouteData.$location(
+        '/login',
       );
 
   void go(BuildContext context) => context.go(location);

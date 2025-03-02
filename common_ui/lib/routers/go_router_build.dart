@@ -1,5 +1,6 @@
 import 'package:common_ui/common/widgets/webview_screen.dart';
 import 'package:common_ui/feature/article/presentation/article_screen.dart';
+import 'package:common_ui/feature/auth/presentation/login_screen.dart';
 import 'package:common_ui/feature/home/presentation/home_screen.dart';
 import 'package:common_ui/feature/media_platform/presentation/media_platform_screen.dart';
 import 'package:common_ui/feature/profile/presentation/profile_screen.dart';
@@ -107,5 +108,15 @@ class WebViewRouteData extends GoRouteData {
   @override
   Widget build(BuildContext context, GoRouterState state) {
     return WebviewScreen(link: link);
+  }
+}
+
+@TypedGoRoute<LoginRouteData>(path: '/login')
+class LoginRouteData extends GoRouteData {
+  const LoginRouteData();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return LoginScreen();
   }
 }
