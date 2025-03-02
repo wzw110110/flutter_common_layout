@@ -1,3 +1,5 @@
+import 'package:common_ui/common/widgets/webview_screen.dart';
+import 'package:common_ui/feature/article/presentation/article_screen.dart';
 import 'package:common_ui/feature/home/presentation/home_screen.dart';
 import 'package:common_ui/feature/media_platform/presentation/media_platform_screen.dart';
 import 'package:common_ui/feature/profile/presentation/profile_screen.dart';
@@ -80,5 +82,30 @@ class SquareRouteData extends GoRouteData {
   @override
   Page<void> buildPage(BuildContext context, GoRouterState state) {
     return NoTransitionPage(child: SquareScreen());
+  }
+}
+
+@TypedGoRoute<ArticleRouteData>(path: '/article/:cid')
+class ArticleRouteData extends GoRouteData {
+  final int cid;
+
+  const ArticleRouteData(this.cid);
+
+  @override
+  Page<void> buildPage(BuildContext context, GoRouterState state) {
+    return NoTransitionPage(child: ArticleScreen(cid: cid));
+  }
+}
+
+@TypedGoRoute<WebViewRouteData>(path: '/detail')
+class WebViewRouteData extends GoRouteData {
+
+  final String link;
+
+  const WebViewRouteData({required this.link});
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return WebviewScreen(link: link);
   }
 }

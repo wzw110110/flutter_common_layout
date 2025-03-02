@@ -1,4 +1,3 @@
-import 'package:common_ui/article/presentation/article_screen.dart';
 import 'package:common_ui/counter_provider.dart';
 import 'package:common_ui/feature/home/presentation/home_screen.dart';
 import 'package:common_ui/http/dio_instance.dart';

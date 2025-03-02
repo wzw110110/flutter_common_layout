@@ -8,6 +8,8 @@ part of 'go_router_build.dart';
 
 List<RouteBase> get $appRoutes => [
       $mainTabbarShellRouteData,
+      $articleRouteData,
+      $webViewRouteData,
     ];
 
 RouteBase get $mainTabbarShellRouteData => ShellRouteData.$route(
@@ -119,6 +121,57 @@ extension $ProfileRouteDataExtension on ProfileRouteData {
 
   String get location => GoRouteData.$location(
         '/profile',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $articleRouteData => GoRouteData.$route(
+      path: '/article/:cid',
+      factory: $ArticleRouteDataExtension._fromState,
+    );
+
+extension $ArticleRouteDataExtension on ArticleRouteData {
+  static ArticleRouteData _fromState(GoRouterState state) => ArticleRouteData(
+        int.parse(state.pathParameters['cid']!),
+      );
+
+  String get location => GoRouteData.$location(
+        '/article/${Uri.encodeComponent(cid.toString())}',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $webViewRouteData => GoRouteData.$route(
+      path: '/detail',
+      factory: $WebViewRouteDataExtension._fromState,
+    );
+
+extension $WebViewRouteDataExtension on WebViewRouteData {
+  static WebViewRouteData _fromState(GoRouterState state) => WebViewRouteData(
+        link: state.uri.queryParameters['link']!,
+      );
+
+  String get location => GoRouteData.$location(
+        '/detail',
+        queryParams: {
+          'link': link,
+        },
       );
 
   void go(BuildContext context) => context.go(location);
