@@ -82,6 +82,18 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
     final username = _usernameController.text;
     final password = _passwordController.text;
     final repassword = _confirmPwdController.text;
+    if (username.isEmpty) {
+      Fluttertoast.showToast(msg: "用户名不能为空");
+      return;
+    }
+    if (password.isEmpty) {
+      Fluttertoast.showToast(msg: "密码不能为空");
+      return;
+    }
+    if (repassword.isEmpty) {
+      Fluttertoast.showToast(msg: "确认密码不能为空");
+      return;
+    }
     if (password != repassword) {
       Fluttertoast.showToast(msg: "两次输入密码不一致");
       return;
