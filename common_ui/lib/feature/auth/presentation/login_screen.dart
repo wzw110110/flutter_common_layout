@@ -1,3 +1,4 @@
+import 'package:common_ui/common/widgets/custom_textfield.dart';
 import 'package:common_ui/feature/auth/presentation/login_controller.dart';
 import 'package:common_ui/feature/profile/presentation/profile_controller.dart';
 import 'package:common_ui/routers/go_router_build.dart';
@@ -35,9 +36,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            _inputViewBuild("输入账号",_usernameController,false),
+            CustomTextField(controller: _usernameController, labelText: "输入账号"),
             SizedBox(height: 15),
-            _inputViewBuild("输入密码",_passwordController,true),
+            CustomTextField(controller: _passwordController, labelText: "输入密码", obscureText: true),
             GestureDetector(
               onTap: () => _loginAction(context),
               child: Container(
@@ -55,21 +56,6 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  Widget _inputViewBuild(String labelText,TextEditingController controller, bool? obscureText) {
-    return TextField(
-      controller: controller,
-      style: TextStyle(color: Colors.white,fontSize: 14),
-      obscureText: obscureText ?? false,
-      cursorColor: Colors.white,
-      decoration: InputDecoration(
-        labelText: labelText,
-        labelStyle: TextStyle(color: Colors.white,fontSize: 14),
-        enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.white,width: 0.5)),
-        focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.white,width: 1)),
       ),
     );
   }
