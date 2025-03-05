@@ -1,6 +1,7 @@
 import 'package:common_ui/common/widgets/webview_screen.dart';
 import 'package:common_ui/feature/article/presentation/article_screen.dart';
 import 'package:common_ui/feature/auth/presentation/login_screen.dart';
+import 'package:common_ui/feature/auth/presentation/register_screen.dart';
 import 'package:common_ui/feature/home/presentation/home_screen.dart';
 import 'package:common_ui/feature/media_platform/presentation/media_platform_screen.dart';
 import 'package:common_ui/feature/profile/presentation/profile_screen.dart';
@@ -118,5 +119,15 @@ class LoginRouteData extends GoRouteData {
   @override
   Widget build(BuildContext context, GoRouterState state) {
     return LoginScreen();
+  }
+}
+
+@TypedGoRoute<RegisterRouteData>(path: '/register')
+class RegisterRouteData extends GoRouteData {
+  const RegisterRouteData();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return RegisterScreen();
   }
 }

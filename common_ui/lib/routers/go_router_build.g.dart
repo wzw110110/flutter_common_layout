@@ -11,6 +11,7 @@ List<RouteBase> get $appRoutes => [
       $articleRouteData,
       $webViewRouteData,
       $loginRouteData,
+      $registerRouteData,
     ];
 
 RouteBase get $mainTabbarShellRouteData => ShellRouteData.$route(
@@ -196,6 +197,29 @@ extension $LoginRouteDataExtension on LoginRouteData {
 
   String get location => GoRouteData.$location(
         '/login',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $registerRouteData => GoRouteData.$route(
+      path: '/register',
+      factory: $RegisterRouteDataExtension._fromState,
+    );
+
+extension $RegisterRouteDataExtension on RegisterRouteData {
+  static RegisterRouteData _fromState(GoRouterState state) =>
+      const RegisterRouteData();
+
+  String get location => GoRouteData.$location(
+        '/register',
       );
 
   void go(BuildContext context) => context.go(location);

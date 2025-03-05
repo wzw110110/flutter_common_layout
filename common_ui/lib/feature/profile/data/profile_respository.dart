@@ -18,6 +18,10 @@ class ProfileRespository {
   Future<ApiBaseResponse<UserInfo>> getUserInfo() {
     return _apiService.getData(path: "/user/lg/userinfo/json", converter: UserInfo.fromJson);
   }
+
+  Future<ApiBaseResponse> register({required String username ,required String password,required String repassword}) {
+    return _apiService.postData(path: "/user/register",data: {"username":username,"password":password,"repassword":repassword} ,converter: (_)=>null);
+  }
 }
 
 @Riverpod(keepAlive: true)
